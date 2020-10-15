@@ -1,6 +1,6 @@
 <footer class="main-footer">
   <div class="pull-right d-none d-sm-inline-block">
-    <!-- <div class="version">Version: <?php echo html_escape($settings->version) ?></div> -->
+    <div class="version">Version: <?php echo html_escape($settings->version) ?></div>
   </div>
   <a href="<?php echo base_url() ?>"><?php echo html_escape($settings->copyright) ?></a>
 </footer>

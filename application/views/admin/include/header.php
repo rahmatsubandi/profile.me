@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <?php $settings = get_settings(); ?>
   <?php $user = get_logged_user($this->session->userdata('id')); ?>
@@ -11,7 +12,7 @@
   <link rel="icon" href="<?php echo base_url($settings->favicon) ?>">
 
   <title><?php echo html_escape($settings->site_name); ?> - Dashboard</title>
-  
+
   <!-- Bootstrap 4.0-->
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/css/bootstrap.min.css">
 
@@ -28,15 +29,15 @@
 
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/css/master_style.css">
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/css/skins/_all-skins.css">   
+  <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/css/skins/_all-skins.css">
   <link href="<?php echo base_url() ?>assets/admin/css/bootstrap-datepicker.min.css" rel="stylesheet">
   <link href="<?php echo base_url() ?>assets/admin/css/icons.css" rel="stylesheet">
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/front/css/simple-line-icons.css">
   <link href="<?php echo base_url() ?>assets/admin/css/bootstrap-switch.min.css" rel="stylesheet">
-  <?php if (isset($page_title) && $page_title == 'Appointment'): ?>
+  <?php if (isset($page_title) && $page_title == 'Appointment') : ?>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css" rel="stylesheet">
   <?php endif ?>
-  
+
   <link href="<?php echo base_url() ?>assets/admin/css/select2.min.css" rel="stylesheet" />
   <!-- Color picker plugins css -->
   <link href="<?php echo base_url() ?>assets/admin/plugins/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet">
@@ -44,7 +45,7 @@
 
   <script type="text/javascript">
     var csrf_token = '<?php echo $this->security->get_csrf_hash(); ?>';
-    var token_name = '<?php echo $this->security->get_csrf_token_name();?>'
+    var token_name = '<?php echo $this->security->get_csrf_token_name(); ?>'
   </script>
 
 
@@ -73,14 +74,14 @@
         <div class="navbar-custom-menu">
           <ul class="nav navbar-nav">
 
-            <?php if (!is_admin()): ?>
-              <?php if (check_my_payment_status() == 0 && $settings->enable_paypal == 1): ?>
+            <?php if (!is_admin()) : ?>
+              <?php if (check_my_payment_status() == 0 && $settings->enable_paypal == 1) : ?>
                 <li>
                   <div class="alert-danger-cus mt-15 mr-20"> <i class="fa fa-info-circle"></i> Your account is limited due to payment</div>
                 </li>
               <?php endif ?>
-            
-              <?php if (user()->status == 2): ?>
+
+              <?php if (user()->status == 2) : ?>
                 <li>
                   <div class="alert-danger-cus mt-15 mr-20"> <i class="fa fa-ban"></i> Your account has been suspended !</div>
                 </li>
@@ -88,16 +89,16 @@
             <?php endif ?>
 
             <li>
-              <?php if (user()->role == 'admin'): ?>
+              <?php if (user()->role == 'admin') : ?>
                 <a target="_blank" href="<?php echo base_url() ?>" class="btn btn-info btn-sm pull-left mt-15 mr-20">
                   <i class="fa fa-eye"></i> View Site
                 </a>
                 <?php $avatar = 'assets/front/images/avatar.png'; ?>
-              <?php else: ?>
-                  <a target="_blank" href="<?php echo base_url(user()->slug) ?>" class="btn btn-info btn-sm pull-left mt-15 mr-20">
-                    <i class="fa fa-eye"></i> View Profile
-                  </a>
-                  <?php $avatar = user()->thumb; ?>
+              <?php else : ?>
+                <a target="_blank" href="<?php echo base_url(user()->slug) ?>" class="btn btn-info btn-sm pull-left mt-15 mr-20">
+                  <i class="fa fa-eye"></i> View Profile
+                </a>
+                <?php $avatar = user()->thumb; ?>
               <?php endif ?>
             </li>
             <!-- User Account: style can be found in dropdown.less -->
@@ -105,14 +106,14 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <img src="<?php echo base_url($avatar) ?>" class="user-image rounded-circle" alt="User Image">
               </a>
-              
+
               <ul class="dropdown-menu scale-up">
                 <!-- User image -->
-                <?php if (user()->role == 'admin'): ?>
+                <?php if (user()->role == 'admin') : ?>
                   <li class="user-header">
                     <img src="<?php echo base_url($settings->logo) ?>" class="float-left" alt="User Image">
                   </li>
-                <?php else: ?>
+                <?php else : ?>
                   <li class="user-header">
                     <img src="<?php echo base_url($avatar) ?>" class="float-left rounded-circle" alt="User Image">
                     <p class="mt-5">
@@ -121,7 +122,7 @@
                     </p>
                   </li>
                 <?php endif ?>
-                
+
                 <!-- Menu Body -->
                 <li class="user-body">
                   <div class="row no-gutters">
@@ -131,7 +132,7 @@
                     <div role="separator" class="divider col-12"></div>
                     <div class="col-12 text-left">
                       <a href="<?php echo base_url('auth/logout') ?>"><i class="fa fa-power-off"></i> Logout</a>
-                    </div>     
+                    </div>
 
                   </div>
                   <!-- /.row -->
@@ -147,5 +148,3 @@
       </nav>
 
     </header>
-
-
